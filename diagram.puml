@@ -1,0 +1,35 @@
+@startuml
+set namespaceSeparator ::
+
+abstract class "state_pattern::state_game.dart::GameState" {
+  +void display()
+}
+
+class "state_pattern::state_game.dart::PlayingState" {
+  +void display()
+}
+
+"state_pattern::state_game.dart::GameState" <|-- "state_pattern::state_game.dart::PlayingState"
+
+class "state_pattern::state_game.dart::TimeoutState" {
+  +void display()
+}
+
+"state_pattern::state_game.dart::GameState" <|-- "state_pattern::state_game.dart::TimeoutState"
+
+class "state_pattern::state_game.dart::HalftimeState" {
+  +void display()
+}
+
+"state_pattern::state_game.dart::GameState" <|-- "state_pattern::state_game.dart::HalftimeState"
+
+class "state_pattern::state_game.dart::Game" {
+  -GameState _state
+  +void setState()
+  +void displayGameStatus()
+}
+
+"state_pattern::state_game.dart::Game" o-- "state_pattern::state_game.dart::GameState"
+
+
+@enduml
